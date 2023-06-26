@@ -1,6 +1,7 @@
 <script >
 
   import axios from 'axios';
+  import Card from './components/Card.vue';
 
   export default {
 
@@ -13,6 +14,10 @@
 
       }
 
+    },
+
+    components:{
+      Card
     },
 
     methods:{
@@ -37,9 +42,14 @@
   <h1>Elenco Progetti</h1>
   <ul>
     
-    <li v-for="project in projects" :key="project.id">
+    <!-- <li v-for="project in projects" :key="project.id">
       {{ project.title }}
-    </li>
+    </li> -->
+
+    <div class="container d-flex flex-wrap">
+      <Card v-for="project in projects" :key="project.id" :project="project"/>
+    </div>
+
   </ul>
 </template>
 
