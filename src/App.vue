@@ -17,10 +17,12 @@
 
     methods:{
       getApi(){
-        axios.get('http://127.0.0.1:8000/projects/api/')
+        axios.get('http://127.0.0.1:8000/api/projects')
           .then( (results) =>{
             this.projects = results.data.data;
             console.log(this.projects);
+          }).catch((err) => {
+            console.log(err);
           })
       }
     },
