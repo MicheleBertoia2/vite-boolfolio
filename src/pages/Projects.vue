@@ -11,6 +11,8 @@
         route : '/projects/api/',
         test : 'http://127.0.0.1:8000/projects/api/',
         projects : [],
+        types : [],
+        technologies : [],
 
       }
 
@@ -29,11 +31,33 @@
           }).catch((err) => {
             console.log(err);
           })
+      },
+
+      getTypes(){
+        axios.get('http://127.0.0.1:8000/api/projects/tipi')
+          .then( (results) =>{
+            this.types = results.data;
+          }).catch((err) => {
+            console.log(err);
+          })
+      },
+
+      getTechnologies(){
+        axios.get('http://127.0.0.1:8000/api/projects/tecnologie')
+          .then( (results) =>{
+            this.technologies = results.data;
+          }).catch((err) => {
+            console.log(err);
+          })
       }
     },
 
+    
+
     mounted(){
-      this.getApi()
+      this.getApi(),
+      this.getTypes(),
+      this.getTechnologies()
     }
   }
 
@@ -43,6 +67,16 @@
   <div class="container my-5">
     <h1>Projects</h1>
     tecnologie e tipi
+    <div class="d-flex">
+      <ul>
+        <li v-for="item in types" :key="item.id" >{{ item.name }}</li>
+      </ul>
+
+      <ul>
+        <li v-for="technology in technologies" :key="technology.id" >{{ technology.name }}</li>
+      </ul>
+
+    </div>
   </div>
 
   <div class="container d-flex flex-wrap">
