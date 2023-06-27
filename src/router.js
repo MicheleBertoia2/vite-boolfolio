@@ -7,6 +7,7 @@ import Projects from './pages/Projects.vue';
 const router = createRouter({
 
   history: createWebHistory(),
+  linkExactActiveClass : 'active',
 
   routes: [
     {
