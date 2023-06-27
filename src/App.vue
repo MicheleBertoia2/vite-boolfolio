@@ -2,6 +2,7 @@
 
   import axios from 'axios';
   import Card from './components/Card.vue';
+  import {router} from './router.js';
 
   export default {
 
@@ -41,6 +42,8 @@
 <template>
   <h1>Elenco Progetti</h1>
   <ul>
+
+    <router-view></router-view>
     
     <!-- <li v-for="project in projects" :key="project.id">
       {{ project.title }}
