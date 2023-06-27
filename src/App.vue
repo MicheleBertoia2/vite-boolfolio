@@ -2,6 +2,7 @@
 
   import axios from 'axios';
   import Card from './components/Card.vue';
+  import Header from './components/Header.vue';
   import {router} from './router.js';
 
   export default {
@@ -18,7 +19,8 @@
     },
 
     components:{
-      Card
+      Card,
+      Header
     },
 
     methods:{
@@ -40,6 +42,7 @@
 </script>
 
 <template>
+  <Header />
   <h1>Elenco Progetti</h1>
   <ul>
 
