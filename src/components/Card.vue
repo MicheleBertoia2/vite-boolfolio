@@ -18,15 +18,17 @@ export default {
 
 <template>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ project.title }}</h5>
-    <span>{{ type }}</span>
-    <ul class="d-flex my-4">
-        <li v-for="tech in project.technologies" :key="tech.id">{{ tech.name }}</li>
-    </ul>
+<router-link :to="{name: 'ProjectDetail', params:{slug: project.slug}}">
+  <div class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ project.title }}</h5>
+      <span>{{ type }}</span>
+      <ul class="d-flex my-4">
+          <li v-for="tech in project.technologies" :key="tech.id">{{ tech.name }}</li>
+      </ul>
+    </div>
   </div>
-</div>
+</router-link>
   
 </template>
 

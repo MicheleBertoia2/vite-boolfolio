@@ -66,7 +66,7 @@
   <div class="container my-5">
     <h1>Projects</h1>
     tecnologie e tipi
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
       <ul>
         <button
           v-for="item in types"
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="container d-flex flex-wrap">
+  <div class="container d-flex flex-wrap justify-content-evenly">
       <Card v-for="project in projects" :key="project.id" :project="project"/>
   </div>
 </template>
