@@ -7,9 +7,7 @@
 
     data(){
       return{
-        server : 'http://127.0.0.1:8000',
-        route : '/projects/api/',
-        test : 'http://127.0.0.1:8000/projects/api/',
+        server : 'http://127.0.0.1:8000/api/',        
         projects : [],
         types : [],
         technologies : [],
@@ -24,10 +22,11 @@
     },
 
     methods:{
-      getApi(){
-        axios.get('http://127.0.0.1:8000/api/projects')
+      getApi(endpoint){
+        axios.get(endpoint)
           .then( (results) =>{
             this.projects = results.data;
+            console.log('click');
           }).catch((err) => {
             console.log(err);
           })
@@ -55,7 +54,7 @@
     
 
     mounted(){
-      this.getApi(),
+      this.getApi(this.server + 'projects'),
       this.getTypes(),
       this.getTechnologies()
     }
@@ -69,7 +68,10 @@
     tecnologie e tipi
     <div class="d-flex">
       <ul>
-        <li v-for="item in types" :key="item.id" >{{ item.name }}</li>
+        <button
+          v-for="item in types"
+          :key="item.id"
+          @click="this.getApi(this.server + 'projects/projects-type/' + item.id)">{{ item.name }}</button>
       </ul>
 
       <ul>
