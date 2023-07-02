@@ -46,19 +46,24 @@ export default {
         <div class="mb-3">
           <label for="name" class="form-label">Nome</label>
           <input type="text" class="form-control" id="name" placeholder="Inserisci nome" v-model="name">
+          <p v-for="(error,index) in errors.name" :key="index" class="text-warning">{{ error }}</p>
         </div>
         
         <div class="mb-5">
           <label for="lastname" class="form-label">Cognome</label>
           <input type="text" class="form-control" id="lastname" placeholder="Inserisci cognome" v-model="lastname">
+          <p v-for="(error,index) in errors.lastname" :key="index" class="text-warning">{{ error }}</p>
+
         </div>
 
         <div class="form-floating mb-3">
           <span>Inserisci un messaggio</span>
           <textarea class="form-control" placeholder="Leave a comment here" id="message" v-model="message"></textarea>
+          <p v-for="(error,index) in errors.message" :key="index" class="text-warning">{{ error }}</p>
+
         </div>
         
-        <button type="submit" class="btn btn-secondary">Submit</button>
+        <button type="submit" class="btn btn-secondary w-100" :disabled="sending">{{ sending ? 'Invio in corso...' : 'Invia' }}</button>
     </form>
 
     <div v-else><h2 class="success">Form inviato correttamente</h2></div>
